@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="{{ asset('template/assets/images/logo/favicon.png') }}" type="image/png">
 
     <link rel="stylesheet" href="{{ asset('template/assets/css/shared/iconly.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/extensions/simple-datatables/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/css/pages/simple-datatables.css') }}">
 
 </head>
 
@@ -62,8 +64,8 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item {{ 'dashboard' == request()->path() ? 'active' : '' }} ">
+                            <a href="{{ url('/dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -81,7 +83,7 @@
                         @if (Auth::user()->level == 'PETUGAS')
                         <li class="sidebar-item ">
                             <a href="#" class='sidebar-link'>
-                                <i class="fas fa-money-bill-wave-alt"></i>
+                                <i class="bi bi-cash-stack"></i>
                                 <span>Pembayaran SPP</span>
                             </a>
                         </li>
@@ -97,28 +99,28 @@
                         @if (auth()->user()->level == 'ADMIN')
                         <li class="sidebar-item ">
                             <a href="#" class='sidebar-link'>
-                                <i class="fas fa-money-bill-wave-alt"></i>
+                                <i class="bi bi-cash-stack"></i>
                                 <span>Pembayaran SPP</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-database"></i>
+                                <i class="bi bi-person-badge-fill"></i>
                                 <span>Data Siswa</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-life-preserver"></i>
+                                <i class="bi bi-wallet-fill"></i>
                                 <span>SPP</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-puzzle"></i>
+                        <li class="sidebar-item {{ 'kelas' || 'kelas/create' || 'kelas/edit' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ url('kelas') }}" class='sidebar-link'>
+                                <i class="bi bi-person-video3"></i>
                                 <span>Data Kelas</span>
                             </a>
                         </li>
@@ -150,7 +152,7 @@
                 @yield('content')
             </div>
 
-            <footer>
+            {{-- <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
                         <p>2023 &copy; schoolifee</p>
@@ -160,11 +162,14 @@
                                 href="https://saugi.me">Zein</a></p>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
         </div>
     </div>
     <script src="{{ asset('template/assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('template/assets/js/app.js') }}"></script>
+
+    <script src="{{ asset('template/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
+    <script src="{{ asset('template/assets/js/pages/simple-datatables.js') }}"></script>
 
     <!-- Need: Apexcharts -->
     <script src="{{ asset('template/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
