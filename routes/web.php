@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SPPController;
 
 /*
@@ -25,4 +26,5 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::resources([
     'kelas' => KelasController::class,
     'spp' => SPPController::class,
+    'siswa' => SiswaController::class,
 ]);

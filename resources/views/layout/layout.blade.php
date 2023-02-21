@@ -104,21 +104,21 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item {{ 'siswa' == request()->path() ? 'active' : '' }} ">
+                            <a href="{{ url('siswa') }}" class='sidebar-link'>
                                 <i class="bi bi-person-badge-fill"></i>
                                 <span>Data Siswa</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item {{ 'spp' == request()->path() ? 'active' : '' }} ">
+                            <a href="{{ url('spp') }}" class='sidebar-link'>
                                 <i class="bi bi-wallet-fill"></i>
                                 <span>SPP</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ 'kelas' || 'kelas/create' || 'kelas/edit' == request()->path() ? 'active' : '' }}">
+                        <li class="sidebar-item {{ 'kelas' == request()->path() ? 'active' : '' }} ">
                             <a href="{{ url('kelas') }}" class='sidebar-link'>
                                 <i class="bi bi-person-video3"></i>
                                 <span>Data Kelas</span>

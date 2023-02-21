@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Models\SPP;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -12,31 +14,50 @@ class SiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        $dataSiswa = Siswa::orderBy('id', 'desc')->get();
+        return view('siswa.index', compact('dataSiswa'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
-        //
+        $spp = SPP::all();
+        $kelas = Kelas::all();
+        return view('siswa.create', compact('spp', 'kelas'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_siswa' => 'required',
+            'nisn' => 'required',
+            'kelas_id' => 'required',
+            'spp_id' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        Siswa::create([
+            'nama_siswa' => $request->nama_siswa,
+            'nisn' => $request->nisn,
+            'kelas_id' => $request->kelas_id,
+            'spp_id' => $request->spp_id,
+            'alamat' => $request->alamat,
+        ]);
+
+        return redirect('siswa');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Siswa $siswa): Response
+    public function show($id)
     {
         //
     }
@@ -44,7 +65,7 @@ class SiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Siswa $siswa): Response
+    public function edit($id)
     {
         //
     }
@@ -52,7 +73,7 @@ class SiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Siswa $siswa): RedirectResponse
+    public function update(Request $request, $id)
     {
         //
     }
@@ -60,7 +81,7 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Siswa $siswa): RedirectResponse
+    public function destroy($id)
     {
         //
     }

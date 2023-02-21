@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SPP extends Model
 {
     use HasFactory;
-    protected $table = 'SPP';
+    protected $table = 'spp';
     protected $guarded = [];
 
     public function siswaSPP()
